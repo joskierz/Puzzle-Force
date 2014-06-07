@@ -5,7 +5,7 @@
 	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
 	<ProductVersion>10.0.20506</ProductVersion>
 	<SchemaVersion>2.0</SchemaVersion>
-	<ProjectGuid>{4FD4AC6C-8800-91F8-1E58-F32935FEC8F3}</ProjectGuid>
+	<ProjectGuid>{B9288E6D-980C-D490-E262-02A11923C6E8}</ProjectGuid>
 	<OutputType>Library</OutputType>
 	<AppDesignerFolder>Properties</AppDesignerFolder>
 	<RootNamespace></RootNamespace>
@@ -48,8 +48,11 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\Enemies\EnemyShip.cs" />
      <Compile Include="Assets\Scripts\Enemies\EnemySpawner.cs" />
+     <Compile Include="Assets\Scripts\GUI\LevelGui.cs" />
+     <Compile Include="Assets\Scripts\GUI\PuzzleGrid.cs" />
+     <Compile Include="Assets\Scripts\GUI\PuzzleNode.cs" />
      <Compile Include="Assets\Scripts\GameState.cs" />
-     <Compile Include="Assets\Scripts\LevelGui.cs" />
+     <Compile Include="Assets\Scripts\Player\Player.cs" />
      <Compile Include="Assets\Scripts\Player\Player_Movement.cs" />
      <Compile Include="Assets\Scripts\Player\Player_Weapons.cs" />
      <Compile Include="Assets\Scripts\Projectiles\Projectile.cs" />

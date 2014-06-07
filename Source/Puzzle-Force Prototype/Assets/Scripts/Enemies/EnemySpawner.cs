@@ -24,9 +24,10 @@ public class EnemySpawner : MonoBehaviour
 
     void SpawnEnemy()
     {
-        GameObject newEnemy = (GameObject) Instantiate(Resources.Load("Prefabs/enemy_ship"));
-        newEnemy.transform.position = new Vector3(UnityEngine.Random.Range(0,GameState.Instance.ScreenToWorldLimits.x),UnityEngine.Random.Range(-GameState.Instance.ScreenToWorldLimits.y,GameState.Instance.ScreenToWorldLimits.y));
-        newEnemy.transform.parent = GameObject.Find("middleground").transform;
-        newEnemy.gameObject.GetComponent<EnemyShip>().ShipColor = (EnemyShip.shipColor) UnityEngine.Random.Range(1, 5);
+        var newEnemy = (GameObject) Instantiate(Resources.Load("Prefabs/enemy_ship"));
+        var screenRect = GameState.Instance.ScreenToWorldLimits;
+        newEnemy.transform.position = new Vector3(UnityEngine.Random.Range(0,screenRect.xMax),UnityEngine.Random.Range(screenRect.yMin,screenRect.yMax));
+        newEnemy.transform.parent = GameObject.Find("/Middleground").transform;
+        newEnemy.gameObject.GetComponent<EnemyShip>().ShipColor = (EnemyShip.shipColor) UnityEngine.Random.Range(0, 5);
     }
 }

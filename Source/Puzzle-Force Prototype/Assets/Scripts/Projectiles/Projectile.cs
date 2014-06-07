@@ -24,13 +24,14 @@ public class Projectile: MonoBehaviour
             transform.position = new Vector3(transform.position.x - ProjectileSpeed * Time.deltaTime, transform.position.y);
 	    }
 
-	    if (GameState.Instance.IsOutsideScreen(gameObject))
+	    if (GameState.Instance.IsOutsideScreen(gameObject.transform.position))
 	    {
 	        Destroy(gameObject);
 	    }
 	}
     void OnTriggerEnter2D(Collider2D other)
     {
+        print(other.gameObject.name);
         if (Friendly)
         {
             if (other.gameObject.tag == "Enemy")

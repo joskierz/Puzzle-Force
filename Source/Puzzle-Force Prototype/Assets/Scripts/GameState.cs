@@ -3,9 +3,9 @@ using System.Collections;
 
 public class GameState : MonoBehaviour
 {
-    private Vector3 _screenToWorldLimits;
+    private Rect _screenToWorldLimits;
 
-    public Vector3 ScreenToWorldLimits
+    public Rect ScreenToWorldLimits
     {
         get
         {
@@ -21,9 +21,12 @@ public class GameState : MonoBehaviour
             if (_instance == null)
             {
                 _instance = new GameObject("_gamestate").AddComponent<GameState>();
-                _instance._screenToWorldLimits.y = Camera.main.orthographicSize;
-                _instance._screenToWorldLimits.x = _instance._screenToWorldLimits.y * 16 / 9;
-
+                _instance._screenToWorldLimits.yMax = Camera.main.orthographicSize;
+                //IF YOU ARE GOING TO CHANGE THE GUI HEIGHT YOU MUST FIND THE RATIO OF THE MAX HEIGHT OF MOVEMENT AND MIN HEIGHT OF MOVEMENT
+                _instance._screenToWorldLimits.yMin = -Camera.main.orthographicSize*.6f;// (4.5/7.5=0.6)  
+                _instance._screenToWorldLimits.xMax = _instance._screenToWorldLimits.yMax * 16 / 9;
+                _instance._screenToWorldLimits.xMin = -_instance._screenToWorldLimits.xMax;
+                print(_instance._screenToWorldLimits.xMin + "," + _instance._screenToWorldLimits.xMax + "  " + _instance._screenToWorldLimits.yMin + ", " + _instance._screenToWorldLimits.yMax);
             }
 
             return _instance;
@@ -36,9 +39,14 @@ public class GameState : MonoBehaviour
         _instance = null;
     }
 
-    public bool IsOutsideScreen(GameObject go)
+    public bool IsOutsideScreen(Vector3 go)
     {
-        if (go.transform.position.x > ScreenToWorldLimits.x)
+        if (ScreenToWorldLimits.Contains(go))
+        {
+            return false;
+        }
+
+        /*if (go.transform.position.x > ScreenToWorldLimits.x)
         {
             return true;
         }
@@ -53,8 +61,8 @@ public class GameState : MonoBehaviour
         if (go.transform.position.y < -ScreenToWorldLimits.y)
         {
             return true;
-        }
+        }*/
 
-        return false;
+        return true;
     }
 }

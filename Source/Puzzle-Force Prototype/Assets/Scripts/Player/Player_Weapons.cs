@@ -15,7 +15,7 @@ public class Player_Weapons : MonoBehaviour {
 	        var laser = (GameObject) Instantiate(Resources.Load("Prefabs/friendly_laser"));
 	        laser.transform.position =
 	            Player_Movement.GetPlayerShip().transform.GetChild(0).transform.position;
-	        laser.transform.parent = GameObject.Find("/middleground").transform;
+	        laser.transform.parent = GameObject.Find("/Middleground").transform;
 	        laser.GetComponent<Projectile>().Friendly = true;
 	    }
 	}
